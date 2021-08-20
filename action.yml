@@ -1,0 +1,33 @@
+# action.yml
+name: Http Polling
+author: yao
+description: "Wait for response code from a URL with timeout"
+inputs:
+  url:
+    description: URL to poll
+    required: true
+  responseCode:
+    description: Response code to wait for
+    required: false
+    default: "200"
+  timeout:
+    description: "Timeout before giving up in ms"
+    required: false
+    default: 30000
+  interval:
+    description: "Interval between polling in ms"
+    required: false
+    default: 200
+outputs:
+  result:
+    description: outputs the response from the call
+runs:
+  using: "composite"
+  steps:
+    - id: main
+      run: |
+        ${{ github.action_path }}/main.sh \
+        --url="${{ inputs.url }}" \
+        --timeout="${{ inputs.timeout }}" \
+        --interval="${{ inputs.interval }}"\
+      shell: bash
