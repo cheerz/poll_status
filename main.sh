@@ -31,9 +31,7 @@ done
 function poll_status {
   while true;
   do
-    echo "$url"
     status=$(curl $url -s | jq '.status');
-    echo "$status"
     echo "$(date +%H:%M:%S): status is $status";
     if [[ "$status" == "\"complete\"" || "$status" == "\"failed\"" ]]; then
         if [[ "$status" == "\"failed\"" ]]; then
