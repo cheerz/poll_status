@@ -31,7 +31,9 @@ done
 function poll_status {
   while true;
   do
-    status=$(curl $url -s | jq $status_path);
+    echo "$url"
+    status=$(curl $url -s | jq '.status');
+    echo "$status"
     echo "$(date +%H:%M:%S): status is $status";
     if [[ "$status" == "\"complete\"" || "$status" == "\"failed\"" ]]; then
         if [[ "$status" == "\"failed\"" ]]; then
@@ -46,8 +48,6 @@ function poll_status {
     sleep $interval;
   done
 }
-
-status_path=".status"
 
 printf "\nPolling '${url%\?*}' every $interval seconds, until status is 'complete'\n"
 poll_status
