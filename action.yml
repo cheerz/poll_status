@@ -24,8 +24,7 @@ runs:
       run: |
         echo "${GITHUB_ACTION_PATH}"
         echo "${{ github.action_path }}"
-        ${GITHUB_ACTION_PATH}/main.sh \
+        timeout ${{inputs.timeout }} ${GITHUB_ACTION_PATH}/main.sh \
         --url="${{ inputs.url }}" \
-        --timeout="${{ inputs.timeout }}" \
         --interval="${{ inputs.interval }}"\
       shell: bash

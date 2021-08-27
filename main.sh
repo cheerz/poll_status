@@ -22,10 +22,6 @@ while test $# -gt 0; do
       interval=`echo $1 | sed -e 's/^[^=]*=//g'`
       shift
       ;;
-    --timeout*)
-      timeout=`echo $1 | sed -e 's/^[^=]*=//g'`
-      shift
-      ;;
     *)
       break
       ;;
@@ -53,5 +49,5 @@ function poll_status {
 
 status_path=".status"
 
-printf "\nPolling '${url%\?*}' every $interval seconds, until status is 'complete', timeout after $timeout seconds\n"
+printf "\nPolling '${url%\?*}' every $interval seconds, until status is 'complete'\n"
 poll_status
