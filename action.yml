@@ -26,7 +26,7 @@ runs:
   steps:
     - id: main
       run: |
-        ${{ github.action_path }}/main.sh \
+        chmod u+x ${{ github.action_path }}/main.sh \
         --url="${{ inputs.url }}" \
         --timeout="${{ inputs.timeout }}" \
         --interval="${{ inputs.interval }}"\
