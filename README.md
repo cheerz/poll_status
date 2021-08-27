@@ -12,19 +12,19 @@ The URL to poll
 
 ### `timeout`
 
-Timeout before giving up in milliseconds. Default `"30000"`
+Timeout before giving up in seconds
 
 ### `interval`
 
-Interval between polling in ms. Default `"200"`
+Interval between polling in seconds
 
 ## Example usage
 ```
 uses: cheerz/poll_status@v1
 with:
   url: "https://www.example.com/deployments/1"
-  timeout: 2000
-  interval: 500
+  timeout: 20
+  interval: 5
 ```
 
 This script expects a json response from the polling url in the following format:

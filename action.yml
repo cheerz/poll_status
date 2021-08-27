@@ -6,16 +6,12 @@ inputs:
   url:
     description: URL to poll
     required: true
-  responseCode:
-    description: Response code to wait for
-    required: false
-    default: "200"
   timeout:
-    description: "Timeout before giving up in ms"
+    description: "Timeout before giving up in seconds"
     required: false
     default: 30000
   interval:
-    description: "Interval between polling in ms"
+    description: "Interval between polling in seconds"
     required: false
     default: 200
 outputs:
